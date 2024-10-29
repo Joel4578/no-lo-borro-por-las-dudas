@@ -78,9 +78,51 @@
                                 
                                 <!-- PANTALLA -->
 
-                                <div class="pantalla">
+                                <div id="pantalla-juego" class="pantalla">
                                     <div class="img">
-                                        <button class="btn-jugar"><span class="logo-btn"></span>PLAY</button>
+                                        <button id="btn-play" class="btn-jugar"><span class="logo-btn"></span>PLAY</button>
+                                    </div>
+                                </div>
+
+                                <div id="pantalla-juego-activa" class="pantalla-activa">
+                                    <div class="img">
+                                        
+                                        <div class="pantalla-principal">
+
+                                            <div class="titulo">
+                                                <img src="imgs/cuatro-en-linea/titulo-juego.png" alt="">
+                                            </div>
+
+                                            <div class="opciones">
+                                                <button id="solo" class="btn">Jugar Solo</button>
+                                                <button id="multijugador" class="btn">Multijugador</button>
+                                                <button id="btn-opciones" class="btn">Opciones</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- OPCIONES -->
+
+                                <div id="pantalla-juego-opciones" class="pantalla-activa-opciones">
+                                    <div class="img">
+                                        
+                                        <div class="pantalla-principal">
+
+                                            <div class="titulo">
+                                                <p>Opciones</p>
+                                            </div>
+
+                                            <div class="opciones">
+                                                <button id="opcion-1" class="btn">opcion 1</button>
+                                                <button id="opcion-2" class="btn">opcion 2</button>
+                                                <button id="volver" class="btn">Volver</button>
+                                            </div>
+
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -95,7 +137,7 @@
 
                                     <div class="botones-extra">
                                         <button class="corazon"> <img src="imgs/intermedia-fotos/Corazon2.png" alt=""></button>
-                                        <img src="imgs/intermedia-fotos/gridicons_fullscreen.png" alt="">
+                                        <button id="btn-fullscreen" class="btn-fullscreen" ><img src="imgs/intermedia-fotos/gridicons_fullscreen.png" alt=""></button>
                                     </div>
 
                                 </div>
@@ -378,6 +420,7 @@
 
     </div>
 
+    <script src="scripts/cuatroEnLinea.js"></script>
     <script src="scripts/menuHamburguesa.js"></script>
     <script src="scripts/loader.js"></script>
 
