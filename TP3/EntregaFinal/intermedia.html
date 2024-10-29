@@ -84,6 +84,8 @@
                                     </div>
                                 </div>
 
+                                <canvas id="c" width="755" height="433"></canvas>
+
                                 <div id="pantalla-juego-principal" class="pantalla-activa">
                                     <div class="img">
                                         
@@ -128,27 +130,34 @@
 
                                 <!-- SELECCION FICHAS -->
 
-                                <div id="pantalla-seleccionar-fichas" class="pantalla-activa-solo">
+                                <div id="pantalla-seleccionar-fichas" class="pantalla-activa-fichas">
                                     <div class="img">
                                         
                                         <div class="pantalla-principal">
 
                                             <div class="titulo">
-                                                <p>Seleccionar Persoanaje</p>
+                                                <p>Seleccionar Personaje</p>
                                             </div>
 
-                                            <div class="jugador1">
-                                                <button id="cuatroPorCuatro" class="btn">Jugar 4 x 4</button>
-                                                <button id="cincoPorCinco" class="btn">Jugar 5 x 5</button>
-                                                <button id="seisPorSeis" class="btn">Jugar 6 x 6</button>
-                                                <button id="volver" class="btn">Volver</button>
+                                            <div class="contenedor-jugadores">
+                                                <div class="jugador">
+                                                    <p>Jugador 1</p>
+                                                    <button id="ficha" class="btn"><img src="imgs/cuatro-en-linea/fichas/ficha-mario.png" alt=""></button>
+                                                    <button id="ficha" class="btn"><img src="imgs/cuatro-en-linea/fichas/ficha-peach.png" alt=""></button>
+                                                    <button id="ficha" class="btn"><img src="imgs/cuatro-en-linea/fichas/ficha-bowser.png" alt=""></button>
+                                                </div>
+    
+                                                <div class="jugador">
+                                                    <p>Jugador 2</p>
+                                                    <button id="ficha" class="btn"><img src="imgs/cuatro-en-linea/fichas/ficha-mario.png" alt=""></button>
+                                                    <button id="ficha" class="btn"><img src="imgs/cuatro-en-linea/fichas/ficha-peach.png" alt=""></button>
+                                                    <button id="ficha" class="btn"><img src="imgs/cuatro-en-linea/fichas/ficha-bowser.png" alt=""></button>
+                                                </div>
                                             </div>
 
-                                            <div class="jugador2">
-                                                <button id="cuatroPorCuatro" class="btn">Jugar 4 x 4</button>
-                                                <button id="cincoPorCinco" class="btn">Jugar 5 x 5</button>
-                                                <button id="seisPorSeis" class="btn">Jugar 6 x 6</button>
+                                            <div class="contendor-opciones">
                                                 <button id="volver" class="btn">Volver</button>
+                                                <button id="jugar" class="btn">Jugar</button>
                                             </div>
 
                                         </div>
@@ -450,9 +459,23 @@
 
     </div>
 
-    <script src="scripts/cuatroEnLinea.js"></script>
     <script src="scripts/menuHamburguesa.js"></script>
     <script src="scripts/loader.js"></script>
+
+    <!-- SCRIPT PARA QUE ANDE EL JUEGO -->
+
+    <script src="scripts/juego/cuatroEnLinea.js"></script>
+    <script src="scripts/juego/Escena.js"></script>
+    <script src="scripts/juego/Dibujable.js"></script>
+    <script src="scripts/juego/ResizedImage.js"></script>
+    <script src="scripts/juego/utils.js"></script>
+    <script src="scripts/juego/UIElement.js"></script>
+    <script src="scripts/juego/Circulo.js"></script>
+    <script src="scripts/juego/Casillero.js"></script>
+    <script src="scripts/juego/Ficha.js"></script>
+    <script src="scripts/juego/Tablero.js"></script>
+    <script src="scripts/juego/Juego.js"></script>
+    <script src="scripts/juego/main.js"></script>
 
 </body>
 </html>

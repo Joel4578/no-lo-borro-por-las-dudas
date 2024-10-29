@@ -258,6 +258,30 @@
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
+/* CANVAS */
+
+#c {
+    display: none;
+}
+
+#c{
+    &.hover{
+      cursor: grab;
+    }
+  
+    &.grabbing{
+      cursor: grabbing;
+    }
+  
+    &.pointer{
+      cursor: pointer;
+    }
+  
+    &.illegal{
+      cursor: no-drop;
+    }
+  }
+
 /* JUEGO ACTIVO (SOLO) */
 
 .pantalla-activa-solo {
@@ -347,9 +371,9 @@
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-/* JUEGO ACTIVO (OPCIONES) */
+/* JUEGO ACTIVO (FICHAS) */
 
-.pantalla-activa-opciones {
+.pantalla-activa-fichas {
     background-image: url(../imgs/cuatro-en-linea/fondo-juego.png);
     background-size: cover;
     width: 755px;
@@ -358,7 +382,7 @@
     justify-content: center;
 }
 
-.pantalla-activa-opciones .pantalla-principal .titulo, .btn {
+.pantalla-activa-fichas .pantalla-principal .titulo, .btn {
         margin-top: 10px;
         display: flex;
         align-items: center;
@@ -378,16 +402,16 @@
     }
 }
 
-.pantalla-activa-opciones .pantalla-principal{
+.pantalla-activa-fichas .pantalla-principal{
     display: grid;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
     margin-top: 20px;
     height: 90%;
-    width: 350px;
+    width: 400px;
 }
 
-.pantalla-activa-opciones .pantalla-principal .titulo {
+.pantalla-activa-fichas .pantalla-principal .titulo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -396,7 +420,7 @@
     border-radius: 10px;
 }
 
-.pantalla-activa-opciones .pantalla-principal .titulo p {
+.pantalla-activa-fichas .pantalla-principal .titulo p {
     color: #ffffff;
     font-size: 30px;
     font-family: "Lato-Regular", Helvetica;
@@ -406,7 +430,7 @@
     user-select: none;
 }
 
-.pantalla-activa-opciones .pantalla-principal .opciones {
+.pantalla-activa-fichas .pantalla-principal .jugador {
     display: grid;
     justify-content: center;
     margin-top: 20px;
@@ -414,10 +438,26 @@
     width: 100%;
 }
 
-.pantalla-activa-opciones .pantalla-principal .opciones .btn {
+.pantalla-activa-fichas .pantalla-principal .contenedor-jugadores {
+    display: flex;
+}
+
+.pantalla-activa-fichas .pantalla-principal .contenedor-jugadores p {
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "Lato-Regular", Helvetica;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    animation: entrada 1s ease-out forwards;
+}
+
+.pantalla-activa-fichas .pantalla-principal .jugador .btn {
     padding: 10px;
     background: none;
     border: none;
+    border-radius: 50%;
     cursor: pointer;
     transition: .3s;
     font-weight: bold;
@@ -426,7 +466,12 @@
     user-select: none;
 }
 
-.pantalla-activa-opciones .pantalla-principal .opciones .btn:hover {
+.pantalla-activa-fichas .pantalla-principal .jugador .btn img {
+    width: 60px;
+    user-select: none;
+}
+
+.pantalla-activa-fichas .pantalla-principal .jugador .btn:hover {
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #ffffff;
