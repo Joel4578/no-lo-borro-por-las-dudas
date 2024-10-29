@@ -6,49 +6,49 @@ const pantallaGrande = document.getElementById('btn-fullscreen');
 
 const play = document.getElementById('btn-play');
 const pantalla = document.getElementById('pantalla-juego');
-const pantallaActiva = document.getElementById('pantalla-juego-activa');
+const pantallaPrincipal = document.getElementById('pantalla-juego-principal');
 
 // botones pantalla principal
 
 const btnJugarSolo = document.getElementById('solo');
 const btnMultijugador = document.getElementById('multijugador');
-const btnOpciones = document.getElementById('btn-opciones');
-const pantallaOpciones = document.getElementById('pantalla-juego-opciones');
 
 // pantalla jugar solo
 
 const pantallaSolo = document.getElementById('pantalla-juego-solo');
-
-// botones opciones
-
-const opcionUno = document.getElementById('opcion-1');
-const opcionDos = document.getElementById('opcion-2');
 const volverAtras = document.getElementById('volver');
+const cuatroFichas = document.getElementById('cuatroPorCuatro');
+const cincoFichas = document.getElementById('cincoPorCinco');
+const seisFichas = document.getElementById('seisPorSeis');
+
+// seleccionar fichas
+
+const pantallaSeleccionarFicha = document.getElementById('pantalla-seleccionar-fichas');
 
 // mostrar inicio de juego
 
 play.addEventListener('click', () =>{
     pantalla.style.display = 'none';
-    pantallaActiva.style.display = 'flex';
+    pantallaPrincipal.style.display = 'flex';
 });
 
 // jugar solo 
 btnJugarSolo.addEventListener('click', () =>{
-    pantallaActiva.style.display = 'none';
-    pantallaActiva.style.display = 'flex';
+    pantallaPrincipal.style.display = 'none';
+    pantallaSolo.style.display = 'flex';
 }); 
 
-// abrir opciones de juego
+// cuatro por cuatro (facil)
 
-btnOpciones.addEventListener('click', () => {
-    pantallaActiva.style.display = 'none';
-    pantallaJue.style.display = 'flex';
+cuatroFichas.addEventListener('click', () => {
+    pantallaSolo.style.display = 'none';
+    pantallaSeleccionarFicha.style.display = 'flex';
 })
 
 // volver atras 
 
 volverAtras.addEventListener('click', () => {
-    pantallaOpciones.style.display = 'none';
-    pantallaActiva.style.display = 'flex';
+    pantallaSolo.style.display = 'none';
+    pantallaPrincipal.style.display = 'flex';
 })
 
