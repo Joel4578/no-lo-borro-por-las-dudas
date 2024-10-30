@@ -1,4 +1,4 @@
-// class Juego {
+class Juego {
 
   // CONSTRUCTOR PARA EL JUEGO
 
@@ -37,8 +37,8 @@
       MENU: getImage('imgs/cuatro-en-linea/fondo-juego.png'),
       TITULO: getImage('imgs/cuatro-en-linea/titulo-juego.png'),
       CLICPARAEMPEZAR: {
-                default: getImage('imgs/cuatro-en-linea/btn-comenzar.png'),
-                hover: getImage('imgs/cuatro-en-linea/btn-comenzar-hover.png')
+        default: getImage('imgs/cuatro-en-linea/clic_para_empezar.png'),
+        hover: getImage('./img/juego/clic_para_empezar_hover.png')
       },
       SELECTMODE: {
         4: {
@@ -64,6 +64,7 @@
 
     this.STATES = {
       MENU: 'menu',
+      SELECTION_FICHA_MENU: ,
       TRANSITION_MENU_SELECT_MODE: 'transition menu to select ficha',
       SELECT_MODE: 'select mode',
       SELECT_FICHA: 'select ficha',
@@ -84,7 +85,11 @@
 
     this.UI.TITULO = new UIElement(new ResizedImage(this.IMGS.TITULO, 300, 150, 0, 0, ctx), null, canvas.width /2 - 150,  canvas.height / 2 - 180, this.ctx)
 
-    this.UI.CLICPARAEMPEZAR = new UIElement(new ResizedImage(this.IMGS.CLICPARAEMPEZAR.default, 350, 44, undefined, undefined, ctx),new ResizedImage(this.IMGS.CLICPARAEMPEZAR.hover, 350, 44, undefined, undefined, ctx), canvas.width / 2 - 175, canvas.height - 120, ctx)
+    this.UI.CLICPARAEMPEZAR = new UIElement(
+      new ResizedImage(this.IMGS.CLICPARAEMPEZAR.default, 350, 44, undefined, undefined, ctx),
+      new ResizedImage(this.IMGS.CLICPARAEMPEZAR.hover, 350, 40, undefined, undefined, ctx),
+      canvas.width / 2 - 175, canvas.height - 120, ctx
+    )
 
     this.UI.CLICPARAEMPEZAR.onClick = () => {
       this.state = this.STATES.SELECTION_FICHA_MENU

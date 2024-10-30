@@ -31,15 +31,16 @@ class Juego {
     
         this.currentFicha = null
     
-        // IMAGENES 
+        // DEFINIMOS LAS IMAGENES 
     
         this.IMGS = {
-            MENU: getImage('imgs/cuatro-en-linea/fondo-juego.png'),
+            FONDO: getImage('imgs/cuatro-en-linea/fondo-juego.png'),
             TITULO: getImage('imgs/cuatro-en-linea/titulo-juego.png'),
             CLICPARAEMPEZAR: {
                 default: getImage('imgs/cuatro-en-linea/btn-comenzar.png'),
                 hover: getImage('imgs/cuatro-en-linea/btn-comenzar-hover.png')
             },
+            CANT_FICHAS: getImage('imgs/cuatro-en-linea/cantidad-fichas-titulo.png'),
             SELECTMODE: {
                 4: {
                     empty: getImage('./img/juego/select-4-empty.png'),
@@ -60,8 +61,7 @@ class Juego {
     
         this.STATES = {
             MENU: 'menu',
-            SELECTION_FICHA_MENU: 'selecciona cantidad de fichas',
-            TRANSITION_MENU_SELECT_MODE: 'transition menu to select ficha',
+            SELECTION_CANTIDAD_FICHAS_MENU: 'selecciona cantidad de fichas',
             SELECT_MODE: 'select mode',
             SELECT_FICHA: 'select ficha',
             TRANSITION_SELECT_FICHA_STARTING: 'transition select ficha to starting',
@@ -76,23 +76,35 @@ class Juego {
         this.state = this.STATES.MENU
     
         this.UI = {}
+
+        // FONDO JUEGO
+
+        this.UI.FONDO = new UIElement(new ResizedImage(this.IMGS.FONDO, 755, 442, 0, 0, ctx), null, 0, 0, this.ctx)
+
+        // MENU PRINCIPAL
     
-        this.UI.MENU = new UIElement(new ResizedImage(this.IMGS.MENU, 755, 442, 0, 0, ctx), null, 0, 0, this.ctx)
+        this.UI.MENU = new UIElement(new ResizedImage(this.IMGS.FONDO, 755, 442, 0, 0, ctx), null, 0, 0, this.ctx)
     
         this.UI.TITULO = new UIElement(new ResizedImage(this.IMGS.TITULO, 300, 150, 0, 0, ctx), null, canvas.width /2 - 150,  canvas.height / 2 - 180, this.ctx)
-    
+
         this.UI.CLICPARAEMPEZAR = new UIElement(new ResizedImage(this.IMGS.CLICPARAEMPEZAR.default, 350, 44, undefined, undefined, ctx),new ResizedImage(this.IMGS.CLICPARAEMPEZAR.hover, 350, 44, undefined, undefined, ctx), canvas.width / 2 - 175, canvas.height - 120, ctx)
-    
+
+        // SELECCION DE FICHAS
+
+        this.UI.TITULO_PEQUENIO = new UIElement(new ResizedImage(this.IMGS.TITULO, 150, 75, 0, 0, ctx), null, canvas.width /2 - 80,  canvas.height / 2 - 160, this.ctx)
+
+        this.UI.TITULO_CANTIDAD_FICHAS = new UIElement(new ResizedImage(this.IMGS.CANT_FICHAS, 300, 50, 0, 0, ctx), null, canvas.width /2 ,  canvas.height / 2 , this.ctx);
+        
         this.UI.CLICPARAEMPEZAR.onClick = () => {
-            this.state = this.STATES.SELECTION_FICHA_MENU
+            this.state = this.STATES.SELECTION_CANTIDAD_FICHA_MENU
             this.canvas.classList.remove('pointer')
         }
     
         this.UI.CLICPARAEMPEZAR.onHover = () => {
-          this.canvas.classList.add('pointer')
+            this.canvas.classList.add('pointer')
         }
         this.UI.CLICPARAEMPEZAR.onHoverLeave = () => {
-          this.canvas.classList.remove('pointer')
+            this.canvas.classList.remove('pointer')
         }
     
         this.UI.SELECTMODE = {
@@ -207,8 +219,8 @@ class Juego {
         this.tablero
     
         this.mouse = {
-          x: 0,
-          y: 0,
+            x: 0,
+            y: 0,
         }
     
     
@@ -288,21 +300,31 @@ class Juego {
         this.ctx.fillStyle = '#000'
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
     
+        // MENU DIBUJADO
+
         if (this.state == this.STATES.MENU) {
-          this.UI.MENU.draw()
-          this.UI.TITULO.draw()
-          this.UI.CLICPARAEMPEZAR.draw()
-          // this.ESCENAS.ANIMATE_CLICPARAEMPEZAR.animate(1.5)
+            this.UI.MENU.draw()
+            this.UI.TITULO.draw()
+            this.UI.CLICPARAEMPEZAR.draw()
+            this.ESCENAS.ANIMATE_CLICPARAEMPEZAR.animate(2)
+        }
+    
+        // SELECCION CANTIDAD DE FICHAS MENU
+
+        if(this.state == this.STATES.SELECTION_FICHA_MENU){
+            this.UI.FONDO.draw()
+            this.UI.TITULO_PEQUENIO.draw()
+            // this.UI.TITULO_CANTIDAD_FICHAS.draw()
         }
         
-        if (this.state == this.STATES.TRANSITION_MENU_SELECT_MODE) {
-          this.UI.MENU.draw()
-          this.UI.SELECTMODE[4].draw()
-          this.UI.SELECTMODE[5].draw()
-          this.UI.SELECTMODE[6].draw()
-          this.UI.SELECTMODE[7].draw()
-          this.ESCENAS.TRANSITION_MENU_SELECT_MODE.animate(2)
-        }
+        // if (this.state == this.STATES.TRANSITION_MENU_SELECT_MODE) {
+        //   this.UI.MENU.draw()
+        //   this.UI.SELECTMODE[4].draw()
+        //   this.UI.SELECTMODE[5].draw()
+        //   this.UI.SELECTMODE[6].draw()
+        //   this.UI.SELECTMODE[7].draw()
+        //   this.ESCENAS.TRANSITION_MENU_SELECT_MODE.animate(0)
+        // }
     
         if (this.state == this.STATES.SELECT_MODE) {
           this.UI.SELECTMODE[4].draw()
