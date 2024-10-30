@@ -19,4 +19,5 @@ class Escena{
       this.startTime = -1
     }
   }
+
 }

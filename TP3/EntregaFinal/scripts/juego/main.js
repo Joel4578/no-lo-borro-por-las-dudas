@@ -33,11 +33,6 @@ c.height = sizes.height
 let juego = new Juego(ctx, c)
 
 
-
-
-
-
-
 function loop() {
   juego.update()
   requestAnimationFrame(loop)
