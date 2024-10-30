@@ -41,6 +41,20 @@ class Juego {
                 hover: getImage('imgs/cuatro-en-linea/btn-comenzar-hover.png')
             },
             CANT_FICHAS: getImage('imgs/cuatro-en-linea/cantidad-fichas-titulo.png'),
+            SELECCION_FICHAS: {
+              4 : {
+                default : getImage('imgs/cuatro-en-linea/4-EN-LINEA.png'),
+                hover: getImage('imgs/cuatro-en-linea/4-EN-LINEA_hover.png')
+              },
+              5 : {
+                default : getImage('imgs/cuatro-en-linea/5-EN-LINEA.png'),
+                hover: getImage('imgs/cuatro-en-linea/5-EN-LINEA_hover.png')
+              },
+              6 : {
+                default : getImage('imgs/cuatro-en-linea/6-EN-LINEA.png'),
+                hover: getImage('imgs/cuatro-en-linea/6-EN-LINEA_hover.png')
+              }
+            },
             SELECTMODE: {
                 4: {
                     empty: getImage('./img/juego/select-4-empty.png'),
@@ -89,11 +103,7 @@ class Juego {
 
         this.UI.CLICPARAEMPEZAR = new UIElement(new ResizedImage(this.IMGS.CLICPARAEMPEZAR.default, 350, 44, undefined, undefined, ctx),new ResizedImage(this.IMGS.CLICPARAEMPEZAR.hover, 350, 44, undefined, undefined, ctx), canvas.width / 2 - 175, canvas.height - 120, ctx)
 
-        // SELECCION DE FICHAS
-
-        this.UI.TITULO_PEQUENIO = new UIElement(new ResizedImage(this.IMGS.TITULO, 150, 75, 0, 0, ctx), null, canvas.width /2 - 80,  canvas.height / 2 - 160, this.ctx)
-
-        this.UI.TITULO_CANTIDAD_FICHAS = new UIElement(new ResizedImage(this.IMGS.CANT_FICHAS, 300, 50, 0, 0, ctx), null, canvas.width /2 ,  canvas.height / 2 , this.ctx);
+        // ACCIONES DEL BOTON CLICPARAEMEPEZAR
         
         this.UI.CLICPARAEMPEZAR.onClick = () => {
             this.state = this.STATES.SELECTION_CANTIDAD_FICHA_MENU
@@ -103,10 +113,77 @@ class Juego {
         this.UI.CLICPARAEMPEZAR.onHover = () => {
             this.canvas.classList.add('pointer')
         }
+
         this.UI.CLICPARAEMPEZAR.onHoverLeave = () => {
             this.canvas.classList.remove('pointer')
         }
-    
+
+        // SELECCION DE FICHAS
+
+        this.UI.TITULO_PEQUENIO = new UIElement(new ResizedImage(this.IMGS.TITULO, 150, 75, 0, 0, ctx), null, canvas.width /2 - 80,  canvas.height / 2 - 180, this.ctx)
+
+        this.UI.TITULO_CANTIDAD_FICHAS = new UIElement(new ResizedImage(this.IMGS.CANT_FICHAS, 664, 33, 0, 0, ctx), null, canvas.width /2 - 330 ,  canvas.height / 2 - 60  , this.ctx);
+
+        this.UI.SELECCION_FICHAS = {
+            4: new UIElement(new ResizedImage(this.IMGS.SELECCION_FICHAS[4].default, 167, 29, undefined, undefined, ctx),new ResizedImage(this.IMGS.SELECCION_FICHAS[4].hover, 226, 29, undefined, undefined, ctx), canvas.width / 2 - 94, canvas.height - 210, ctx),
+            5: new UIElement(new ResizedImage(this.IMGS.SELECCION_FICHAS[5].default, 167, 29, undefined, undefined, ctx),new ResizedImage(this.IMGS.SELECCION_FICHAS[5].hover, 226, 29, undefined, undefined, ctx), canvas.width / 2 - 94, canvas.height - 140, ctx),
+            6: new UIElement(new ResizedImage(this.IMGS.SELECCION_FICHAS[6].default, 167, 29, undefined, undefined, ctx),new ResizedImage(this.IMGS.SELECCION_FICHAS[6].hover, 226, 29, undefined, undefined, ctx), canvas.width / 2 - 94, canvas.height - 70, ctx)
+        }
+
+        this.UI.CUATROFICHAS = new UIElement(new ResizedImage(this.IMGS.SELECCION_FICHAS[4].default, 167, 29, undefined, undefined, ctx),new ResizedImage(this.IMGS.SELECCION_FICHAS[4].hover, 226, 29, undefined, undefined, ctx), canvas.width / 2 - 94, canvas.height - 210, ctx)
+
+        this.UI.CUATROFICHAS.onClick = () => {
+          this.gameSettings.fichasToWin = 4
+          this.gameSettings.columnas = 7
+          this.gameSettings.duration = this.gameSettings.columnas * this.gameSettings.rows * 10
+          this.canvas.classList.remove('pointer')
+          this.state = this.STATES.SELECCION_PERSONAJE
+        }
+
+        this.UI.CUATROFICHAS.onHover = () => {
+          this.canvas.classList.add('pointer');
+        }
+
+        this.UI.CUATROFICHAS.onHoverLeave = () => {
+          this.canvas.classList.remove('pointer');
+        }
+
+        this.UI.CINCOFICHAS = new UIElement(new ResizedImage(this.IMGS.SELECCION_FICHAS[5].default, 167, 29, undefined, undefined, ctx),new ResizedImage(this.IMGS.SELECCION_FICHAS[5].hover, 226, 29, undefined, undefined, ctx), canvas.width / 2 - 94, canvas.height - 140, ctx)
+        
+        this.UI.CINCOFICHAS.onClick = () => {
+          this.gameSettings.fichasToWin = 5
+          this.gameSettings.columnas = 8
+          this.gameSettings.duration = this.gameSettings.columnas * this.gameSettings.rows * 10
+          this.canvas.classList.remove('pointer')
+          this.state = this.STATES.SELECCION_PERSONAJE
+        }
+
+        this.UI.CINCOFICHAS.onHover = () => {
+          this.canvas.classList.add('pointer');
+        }
+
+        this.UI.CINCOFICHAS.onHoverLeave = () => {
+          this.canvas.classList.remove('pointer');
+        }
+
+        this.UI.SEISFICHAS = new UIElement(new ResizedImage(this.IMGS.SELECCION_FICHAS[6].default, 167, 29, undefined, undefined, ctx),new ResizedImage(this.IMGS.SELECCION_FICHAS[6].hover, 226, 29, undefined, undefined, ctx), canvas.width / 2 - 94, canvas.height - 70, ctx)
+
+        this.UI.CINCOFICHAS.onClick = () => {
+          this.gameSettings.fichasToWin = 6
+          this.gameSettings.columnas = 9
+          this.gameSettings.duration = this.gameSettings.columnas * this.gameSettings.rows * 10
+          this.canvas.classList.remove('pointer')
+          this.state = this.STATES.SELECCION_PERSONAJE
+        }
+
+        this.UI.CINCOFICHAS.onHover = () => {
+          this.canvas.classList.add('pointer');
+        }
+
+        this.UI.CINCOFICHAS.onHoverLeave = () => {
+          this.canvas.classList.remove('pointer');
+        }
+
         this.UI.SELECTMODE = {
           4: new UIElement(new ResizedImage(this.IMGS.SELECTMODE[4].empty, 197, 50, undefined, undefined, this.ctx), new ResizedImage(this.IMGS.SELECTMODE[4].filled, 197, 50, undefined, undefined, this.ctx), canvas.width / 2 - 343 / 2, (canvas.height / 2 - 50 / 2) * 4, this.ctx),
           5: new UIElement(new ResizedImage(this.IMGS.SELECTMODE[5].empty, 243, 50, undefined, undefined, this.ctx), new ResizedImage(this.IMGS.SELECTMODE[5].filled, 243, 50, undefined, undefined, this.ctx), canvas.width / 2 - 343 / 2, (canvas.height / 2 - 50 / 2) * 4, this.ctx),
@@ -214,8 +291,6 @@ class Juego {
           this.state = this.STATES.SELECT_FICHA
         }
     
-    
-    
         this.tablero
     
         this.mouse = {
@@ -314,7 +389,12 @@ class Juego {
         if(this.state == this.STATES.SELECTION_FICHA_MENU){
             this.UI.FONDO.draw()
             this.UI.TITULO_PEQUENIO.draw()
-            // this.UI.TITULO_CANTIDAD_FICHAS.draw()
+            this.UI.TITULO_CANTIDAD_FICHAS.draw()
+            this.UI.SELECCION_FICHAS[4].draw();
+            // this.UI.CUATROFICHAS.draw();
+            // this.UI.CUATROFICHAS.draw();
+            // this.UI.CINCOFICHAS.draw();
+            // this.UI.SEISFICHAS.draw();
         }
         
         // if (this.state == this.STATES.TRANSITION_MENU_SELECT_MODE) {
